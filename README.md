@@ -22,6 +22,7 @@ Clients submit async jobs via a control-plane API; **independently scalable work
 |-----|-------------|
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Architecture decision record (D1–D20) |
 | [docs/CODE-AND-DATA.md](docs/CODE-AND-DATA.md) | Low-level code review + PostgreSQL queue pattern |
+| [docs/CODE-MAP.md](docs/CODE-MAP.md) | **File structure & code pointers** |
 | [docs/PLAN.md](docs/PLAN.md) | Executive plan — scope and must-haves |
 | [docs/BUILD-SEQUENCE.md](docs/BUILD-SEQUENCE.md) | DO-first build phases with verify gates |
 | [docs/PREREQUISITES.md](docs/PREREQUISITES.md) | Tools, auth, access checklist |
