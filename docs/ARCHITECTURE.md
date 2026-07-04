@@ -88,7 +88,7 @@ Handlers return `success`, `transient_failure`, or `permanent_failure`. Platform
 | **Accept** (POST /v1/jobs) | api-hpa | PG INSERT rate |
 | **Execute** (lease + handler) | worker-hpa | Worker count × handler duration |
 
-**PG dequeue poll ceiling (~30–50 workers on 1 vCPU PG):** escape via Redis ZSET in Layer 3 without changing worker code.
+**PG dequeue poll ceiling (~30–50 workers on 1 vCPU PG):** escape via Redis ZSET in Layer 3 without changing worker code. See [SCALING-AND-LIMITS.md](SCALING-AND-LIMITS.md) for full capacity model, API long-poll limits, and DB dependency risks.
 
 ## Resource isolation
 
@@ -114,6 +114,7 @@ Handlers return `success`, `transient_failure`, or `permanent_failure`. Platform
 | Operations runbook | [RUNBOOK.md](RUNBOOK.md) |
 | Low-level code + data layer | [CODE-AND-DATA.md](CODE-AND-DATA.md) |
 | ADR (D1–D20) | [DECISIONS.md](DECISIONS.md) |
+| Scaling & limits | [SCALING-AND-LIMITS.md](SCALING-AND-LIMITS.md) |
 
 See [CODE-AND-DATA.md](CODE-AND-DATA.md) for a code review (Open/Closed, MVP gaps) and a detailed explanation of the PostgreSQL dequeue/lease/retry pattern.
 

@@ -14,6 +14,7 @@ Clients submit async jobs via a control-plane API; **independently scalable work
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | **High-level system architecture** — diagrams, lifecycle, scaling |
 | [docs/USER-FLOWS.md](docs/USER-FLOWS.md) | **User & operator flows** — submit, poll, retry, cancel, timeout |
 | [docs/RUNBOOK.md](docs/RUNBOOK.md) | **Operations runbook** — provision, deploy, troubleshoot, tear down |
+| [docs/SCALING-AND-LIMITS.md](docs/SCALING-AND-LIMITS.md) | **Scaling & limits** — Node.js choice, capacity, API/DB bottlenecks |
 
 ### Design & implementation
 
