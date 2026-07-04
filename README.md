@@ -6,15 +6,25 @@ Clients submit async jobs via a control-plane API; **independently scalable work
 
 ## Documentation
 
+### Start here
+
 | Doc | Description |
 |-----|-------------|
-| [docs/PLAN.md](docs/PLAN.md) | Executive plan — scope, architecture, build sequence |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design, lifecycle, worker polling, handlers |
-| [docs/CODE-AND-DATA.md](docs/CODE-AND-DATA.md) | Code review, Open/Closed assessment, PostgreSQL queue pattern |
+| [docs/EVERY-DECISION.md](docs/EVERY-DECISION.md) | **First-principles guide** — every decision explained |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | **High-level system architecture** — diagrams, lifecycle, scaling |
+| [docs/USER-FLOWS.md](docs/USER-FLOWS.md) | **User & operator flows** — submit, poll, retry, cancel, timeout |
+| [docs/RUNBOOK.md](docs/RUNBOOK.md) | **Operations runbook** — provision, deploy, troubleshoot, tear down |
+
+### Design & implementation
+
+| Doc | Description |
+|-----|-------------|
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Architecture decision record (D1–D20) |
-| [docs/BUILD-SEQUENCE.md](docs/BUILD-SEQUENCE.md) | DO-first 1-hour phases with verify gates |
+| [docs/CODE-AND-DATA.md](docs/CODE-AND-DATA.md) | Low-level code review + PostgreSQL queue pattern |
+| [docs/PLAN.md](docs/PLAN.md) | Executive plan — scope and must-haves |
+| [docs/BUILD-SEQUENCE.md](docs/BUILD-SEQUENCE.md) | DO-first build phases with verify gates |
 | [docs/PREREQUISITES.md](docs/PREREQUISITES.md) | Tools, auth, access checklist |
-| [docs/FULL-PLAN.md](docs/FULL-PLAN.md) | Complete planning artifact (all detail) |
+| [docs/FULL-PLAN.md](docs/FULL-PLAN.md) | Complete planning artifact |
 
 ## Prerequisites
 

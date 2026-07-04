@@ -105,7 +105,15 @@ Handlers return `success`, `transient_failure`, or `permanent_failure`. Platform
 - **Operators:** `GET /v1/ops/queues/{q}/status`, structured logs
 - **Layer 2:** Prometheus `/metrics` → HPA on queue depth
 
-## Implementation notes
+## Related documentation
+
+| Topic | Doc |
+|-------|-----|
+| Every decision (first principles) | [EVERY-DECISION.md](EVERY-DECISION.md) |
+| User & operator flows | [USER-FLOWS.md](USER-FLOWS.md) |
+| Operations runbook | [RUNBOOK.md](RUNBOOK.md) |
+| Low-level code + data layer | [CODE-AND-DATA.md](CODE-AND-DATA.md) |
+| ADR (D1–D20) | [DECISIONS.md](DECISIONS.md) |
 
 See [CODE-AND-DATA.md](CODE-AND-DATA.md) for a code review (Open/Closed, MVP gaps) and a detailed explanation of the PostgreSQL dequeue/lease/retry pattern.
 
