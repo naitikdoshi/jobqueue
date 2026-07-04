@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate
+  namespace: jobqueue
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      imagePullSecrets:
+        - name: registry-jobqueue
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: registry.digitalocean.com/jobqueue/api:latest
+          command: ["node", "dist/scripts/migrate.js"]
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: jobqueue-secrets
+                  key: DATABASE_URL
+            - name: PG_SSL
+              value: "true"

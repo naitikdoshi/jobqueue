@@ -1,0 +1,25 @@
+{
+  "name": "jobqueue",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test dist/tests/**/*.test.js",
+    "migrate": "node dist/scripts/migrate.js",
+    "api": "node dist/src/api/main.js",
+    "worker": "node dist/src/worker/main.js",
+    "start:api": "npm run build && npm run migrate && npm run api",
+    "start:worker": "npm run build && npm run worker"
+  },
+  "dependencies": {
+    "fastify": "^5.2.1",
+    "pg": "^8.13.1",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.3"
+  }
+}

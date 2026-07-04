@@ -28,6 +28,7 @@
 ### PostgreSQL as queue
 - **Win:** single durable store, ACID leases
 - **Cost:** dequeue contention at scale → Redis front buffer (Layer 3)
+- **Implementation detail:** [CODE-AND-DATA.md](CODE-AND-DATA.md) — SKIP LOCKED dequeue, lease columns, partial indexes, backoff, DLQ as status
 
 ### At-least-once
 - **Win:** simpler than exactly-once

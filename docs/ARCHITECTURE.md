@@ -104,3 +104,9 @@ Handlers return `success`, `transient_failure`, or `permanent_failure`. Platform
 - **Users:** `GET /v1/jobs/{id}`
 - **Operators:** `GET /v1/ops/queues/{q}/status`, structured logs
 - **Layer 2:** Prometheus `/metrics` → HPA on queue depth
+
+## Implementation notes
+
+See [CODE-AND-DATA.md](CODE-AND-DATA.md) for a code review (Open/Closed, MVP gaps) and a detailed explanation of the PostgreSQL dequeue/lease/retry pattern.
+
+**Lifecycle diagram vs code:** The state diagram above includes a `failed` status. The MVP implementation requeues transient failures directly to `queued` (with `next_retry_at`) rather than passing through a persistent `failed` row state. Terminal outcomes are `completed`, `dead_letter`, and `cancelled`.

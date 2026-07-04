@@ -1,0 +1,53 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kaniko-TARGET
+  namespace: jobqueue
+spec:
+  ttlSecondsAfterFinished: 600
+  template:
+    spec:
+      restartPolicy: Never
+      initContainers:
+        - name: extract
+          image: alpine:3.20
+          command:
+            - sh
+            - -c
+            - apk add --no-cache tar && mkdir -p /workspace && tar xf /src/jobqueue-src.tar -C /workspace
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
+            - name: srctar
+              mountPath: /src
+      containers:
+        - name: kaniko
+          image: gcr.io/kaniko-project/executor:v1.23.2
+          args:
+            - --dockerfile=/dockerfile/Dockerfile
+            - --context=dir:///workspace
+            - --target=TARGET
+            - --destination=REGISTRY_HOST/TARGET:latest
+            - --cache=false
+          volumeMounts:
+            - name: dockerfile
+              mountPath: /dockerfile
+            - name: workspace
+              mountPath: /workspace
+            - name: docker-config
+              mountPath: /kaniko/.docker
+      volumes:
+        - name: dockerfile
+          configMap:
+            name: jobqueue-dockerfile
+        - name: workspace
+          emptyDir: {}
+        - name: srctar
+          configMap:
+            name: jobqueue-src
+        - name: docker-config
+          secret:
+            secretName: kaniko-docr
+            items:
+              - key: config.json
+                path: config.json

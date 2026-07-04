@@ -1,4 +1,4 @@
-# DigitalOcean Job Queue
+# Jobqueue
 
 Custom job queue platform on **DigitalOcean** (DOKS + Managed PostgreSQL + DOCR).
 
@@ -10,6 +10,7 @@ Clients submit async jobs via a control-plane API; **independently scalable work
 |-----|-------------|
 | [docs/PLAN.md](docs/PLAN.md) | Executive plan — scope, architecture, build sequence |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design, lifecycle, worker polling, handlers |
+| [docs/CODE-AND-DATA.md](docs/CODE-AND-DATA.md) | Code review, Open/Closed assessment, PostgreSQL queue pattern |
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Architecture decision record (D1–D20) |
 | [docs/BUILD-SEQUENCE.md](docs/BUILD-SEQUENCE.md) | DO-first 1-hour phases with verify gates |
 | [docs/PREREQUISITES.md](docs/PREREQUISITES.md) | Tools, auth, access checklist |
@@ -19,18 +20,24 @@ Clients submit async jobs via a control-plane API; **independently scalable work
 
 ```bash
 ./scripts/check-prereqs.sh
+npm test                  # local unit tests (all scenarios)
+./scripts/test-scenarios.sh  # live DO Ingress tests
 ```
 
 See [docs/PREREQUISITES.md](docs/PREREQUISITES.md).
 
-## Build (after plan — not started yet)
+## Build
 
 1. `./scripts/provision.sh` — DOCR, Managed PG, DOKS
 2. `./scripts/verify-infra.sh` — connectivity gates
-3. Follow [docs/BUILD-SEQUENCE.md](docs/BUILD-SEQUENCE.md)
+3. `./scripts/deploy.sh` — Kaniko build, API, worker, migration
+4. `./scripts/test-scenarios.sh` — live scenario tests on Ingress
+5. `./scripts/e2e-do.sh` — smoke e2e
+
+See [docs/BUILD-SEQUENCE.md](docs/BUILD-SEQUENCE.md).
 
 ## Status
 
-**Planning complete · Application code not started**
+**Deployed on DO** — Ingress `http://165.245.153.10` (API 2/2, worker 2/2, migration applied)
 
 All verify gates run against **DigitalOcean Ingress** (not localhost).
